@@ -1,6 +1,6 @@
 {
-  "name": "vixxo-pwa-sample",
-  "short_name": "v-pwa-sample",
+  "name": "pwa-sample",
+  "short_name": "pwa-sample",
   "theme_color": "#1976d2",
   "background_color": "#626262",
   "display": "standalone",
