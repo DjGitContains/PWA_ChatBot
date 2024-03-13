@@ -1,27 +1,37 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { map, Observable, Subject } from "rxjs";
+import { Message } from "../Model/Message";
 @Injectable({
     providedIn: "root"
 })
+
 export class ChatBotService {
     private chatbotDataUrl = 'assets/chatbot-responses.json';
 
     constructor(private http:HttpClient){
 
     }
-    getResponse(intent: string): string {
-        // return this.http.get<string[]>(this.chatbotDataUrl).pipe(
-        //     map(data => {
-        //         if(data[intent]){
-        //             const responses = data[intent].responses;
-        //             return responses[Math.floor(Math.random() * responses.length)];
-        //         }
-        //         else{
-        //             return data['default'].responses[Math.floor(Math.random() * data['default'].responses.length)];
-        //         }
-        // }));
+    conversation = new Subject<Message[]>();
+    messageMap = new Map([
+      ["Hi", "Hello"],
+      ["Who are you", "My name is Test Sat Bot"],
+      ["What is your role", "Just guide for the user"],
+      ["defaultmsg", "I can't understand your text. Can you please repeat"],
+    ]);
 
-        return "test";
-    }
+  getBotAnswer(msg: string) {
+    const userMessage = new Message('user', msg);
+    this.conversation.next([userMessage]);
+    const botMessage = new Message('bot', this.getBotMessage(msg));
+    setTimeout(()=>{
+      this.conversation.next([botMessage]);
+    }, 1500);
+  }
+
+  getBotMessage(question: string) : string {
+    question = question.trim();
+    var answer = this.messageMap.get(question);
+    return answer ? answer : this.messageMap.get('defaultmsg')!;
+  }
 }

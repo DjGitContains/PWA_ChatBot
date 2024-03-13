@@ -16,6 +16,24 @@
 .bot-message{
     background-color: #e0e0e0;
 }
+.message.to {
+background-color: #2095FE;
+color: #fff;
+margin-left: 100px;
+text-align: right;
+width: fit-content;
+float: right;
+}
+.message.from {
+background-color: #E5E4E9;
+color: #363636;
+margin-right: 100px;
+width: fit-content;
+float: left;
+}
+.message.to + .message.to, .message.from + .message.from {
+    margin-top: -10px;
+}
 .input-container input[type="text"]{
     width: calc(100% - 80px);
     padding: 8px;
@@ -47,8 +65,7 @@
 position: absolute;  
 right: 0;  
 top: 0;
-}
-
+} 
 
 
 
@@ -63,6 +80,8 @@ top: 0;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 .chat_close_icon {
    cursor:pointer;
@@ -357,18 +376,19 @@ top: 0;
     border: none;
     outline: none;
     background-color: transparent;
+    color: #007bff;
     cursor: pointer;
 }
 #Smallchat .Input_button-send {
     right: 15px;
 }
-#Smallchat .Input-emoji .Input_button-emoji .Icon, #Smallchat .Input_button:hover .Icon {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    -webkit-transition: all .1s ease-in-out;
-    transition: all .1s ease-in-out;
-}
-#Smallchat .Input-emoji .Input_button-emoji .Icon path, #Smallchat .Input_button:hover .Icon path {
-    fill: #2c2c46;
-}
+// #Smallchat .Input-emoji .Input_button-emoji .Icon, #Smallchat .Input_button:hover .Icon {
+//     -webkit-transform: scale(1.1);
+//     -ms-transform: scale(1.1);
+//     transform: scale(1.1);
+//     -webkit-transition: all .1s ease-in-out;
+//     transition: all .1s ease-in-out;
+// }
+// #Smallchat .Input-emoji .Input_button-emoji .Icon path, #Smallchat .Input_button:hover .Icon path {
+//     fill: #2c2c46;
+// }
